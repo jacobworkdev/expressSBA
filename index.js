@@ -31,9 +31,8 @@ app.get('/comments/new',(req,res)=>{
 })
 
 app.post('/comments',(req,res)=>{
-    console.log(req.body)
-    res.send('post sent comment')
     comments.push({user:req.body.user,comment:req.body.comment})
+    res.redirect('/comments')
 })
 
 app.listen(3000, () => {
