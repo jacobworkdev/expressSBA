@@ -23,7 +23,17 @@ const comments = [
 
 ]
 app.get('/comments', (req, res) => {
-    res.render('comments/index')
+    res.render('comments/index',{comments})
+})
+
+app.get('/comments/new',(req,res)=>{
+    res.render('comments/new')
+})
+
+app.post('/comments',(req,res)=>{
+    console.log(req.body)
+    res.send('post sent comment')
+    comments.push({user:req.body.user,comment:req.body.comment})
 })
 
 app.listen(3000, () => {
